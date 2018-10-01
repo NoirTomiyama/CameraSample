@@ -302,7 +302,7 @@ public class Camera2 {
 //                                                intent();
 
                                                 // ここのやり方がよくない？
-                                                activity.finish();
+//                                                activity.finish();
 
                                             }
                                         }, workHandler);
@@ -376,11 +376,15 @@ public class Camera2 {
             saveData(data, path);
 
             //Activity間の値の橋渡し
-//            saveTempPhoto(data,path);
+            saveTempPhoto(data); // 2018/10/01
 
             //フォトへの登録
             MediaScannerConnection.scanFile(activity.getApplicationContext(),
                     new String[]{path}, null, null);
+
+            activity.setResult(Activity.RESULT_OK); // 2018/10/01
+            activity.finish(); // 2018/10/01
+
         } catch (Exception e) {
             toast(e.toString());
         }
@@ -401,12 +405,12 @@ public class Camera2 {
     }
 
     //写真の一時保存
-    private void saveTempPhoto(byte[] data,String path){
+    private void saveTempPhoto(byte[] data){
         //写真が重いので，IntentではなくApplicationを使用する
             CameraSampleApplication cameraSampleApplication =
                     (CameraSampleApplication) activity.getApplication();
             cameraSampleApplication.setTempRawPicture(data);
-            cameraSampleApplication.setPath(path);
+//            cameraSampleApplication.setPath(path);
 
         Log.d("check(Camera2)", String.valueOf(cameraSampleApplication.getTempRawPicture()));
 
@@ -432,5 +436,5 @@ public class Camera2 {
             }
         });
     }
-    
+
 }

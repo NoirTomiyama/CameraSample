@@ -158,19 +158,19 @@ public class MainActivity extends AppCompatActivity {
 //                    Log.d("ある？", "画像パス = " + path);
 
 
-//                    CameraSampleApplication cameraSampleApplication =
-//                            (CameraSampleApplication) getApplication();
-//
-//                    byte[] bytes = cameraSampleApplication.getTempRawPicture();
-//                    Log.d("check(onActivityResult)", String.valueOf(cameraSampleApplication.getTempRawPicture()));
-//
-//                    if(cameraSampleApplication.getTempRawPicture() != null){
-//                        Bitmap bmp = null;
-//                        bmp = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
-//                        if(bmp != null){
-//                            imageView.setImageBitmap(bmp);
-//                        }
-//                    }
+                    CameraSampleApplication cameraSampleApplication =
+                            (CameraSampleApplication) getApplication();
+
+                    byte[] bytes = cameraSampleApplication.getTempRawPicture();
+                    Log.d("check(onActivityResult)", String.valueOf(cameraSampleApplication.getTempRawPicture()));
+
+                    if(cameraSampleApplication.getTempRawPicture() != null){
+                        Bitmap bmp = null;
+                        bmp = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+                        if(bmp != null){
+                            imageView.setImageBitmap(bmp);
+                        }
+                    }
 
 
                 } else if (resultCode == RESULT_CANCELED) {
